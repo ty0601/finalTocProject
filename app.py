@@ -42,6 +42,12 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
+            "source": "play4",
+            "dest": "play4",
+            "conditions": "play",
+        },
+        {
+            "trigger": "advance",
             "source": "user",
             "dest": "read1",
             "conditions": "read",
@@ -61,6 +67,12 @@ machine = TocMachine(
         {
             "trigger": "advance",
             "source": "read3",
+            "dest": "read4",
+            "conditions": "read",
+        },
+        {
+            "trigger": "advance",
+            "source": "read4",
             "dest": "read4",
             "conditions": "read",
         },
