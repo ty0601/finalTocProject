@@ -14,21 +14,75 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2"],
+    states=["user", "play1", "play2" , "play3" , "play4" ,"read1", "read2" , "read3" , "read4"],
     transitions=[
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
+            "dest": "play1",
+            "conditions": "play",
+        },
+        {
+            "trigger": "advance",
+            "source": "play1",
+            "dest": "play2",
+            "conditions": "play",
+        },
+        {
+            "trigger": "advance",
+            "source": "play2",
+            "dest": "play3",
+            "conditions": "play",
+        },
+        {
+            "trigger": "advance",
+            "source": "play3",
+            "dest": "play4",
+            "conditions": "play",
         },
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
+            "dest": "read1",
+            "conditions": "read",
         },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
+        {
+            "trigger": "advance",
+            "source": "read1",
+            "dest": "read2",
+            "conditions": "read",
+        },
+        {
+            "trigger": "advance",
+            "source": "read2",
+            "dest": "read3",
+            "conditions": "read",
+        },
+        {
+            "trigger": "advance",
+            "source": "read3",
+            "dest": "read4",
+            "conditions": "read",
+        },
+        {
+            "trigger": "advance",
+            "source": ["user", "play1", "play2" , "play3" , "play4" ,"read1", "read2" , "read3" , "read4"],
+            "dest": "user",
+            "conditions": "reset",
+        },
+        {
+            "trigger": "advance",
+            "source": ["play1", "play2" , "play3" , "play4" ],
+            "dest": "read1",
+            "conditions": "read",
+        },
+        {
+            "trigger": "advance",
+            "source": [ "read1", "read2" , "read3" , "read4"],
+            "dest": "play1",
+            "conditions": "play",
+        },
+       
     ],
     initial="user",
     auto_transitions=False,
@@ -118,3 +172,4 @@ def show_fsm():
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
     app.run(host="0.0.0.0", port=port, debug=True)
+    show_fsm()
