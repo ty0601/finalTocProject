@@ -23,19 +23,19 @@ class TocMachine(GraphMachine):
         print("I'm reading")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "You are reading")
+        send_text_message(reply_token, "Study for two hours.")
 
     def read2(self, event):
         print("I'm reading")
 
         reply_token = event.reply_token
-        send_text_message(reply_token,  "You are reading")
+        send_text_message(reply_token,  "Study for two hours.")
 
     def read3(self, event):
         print("I'm reading")
 
         reply_token = event.reply_token
-        send_text_message(reply_token,  "You are reading")
+        send_text_message(reply_token,  "Study for two hours.")
 
     def read4(self, event):
         print("I'm reading")
@@ -49,20 +49,20 @@ class TocMachine(GraphMachine):
         print("I'm playing")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "You are playing")
+        send_text_message(reply_token, "Play for two hours.")
 
 
     def play2(self, event):
         print("I'm playing")
 
         reply_token = event.reply_token
-        send_text_message(reply_token,"You are playing")
+        send_text_message(reply_token,"Play for two hours.")
 
     def play3(self, event):
         print("I'm playing")
 
         reply_token = event.reply_token
-        send_text_message(reply_token,"You are playing")
+        send_text_message(reply_token,"Play for two hours.")
 
     def play4(self, event):
         print("I'm playing")
