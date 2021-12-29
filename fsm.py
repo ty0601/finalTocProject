@@ -7,30 +7,65 @@ class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
 
-    def is_going_to_state1(self, event):
+    def read(self, event):
         text = event.message.text
-        return text.lower() == "go to state1"
+        return text.lower() == "study"
 
-    def is_going_to_state2(self, event):
+    def play(self, event):
         text = event.message.text
-        return text.lower() == "go to state2"
+        return text.lower() == "play"
 
-    def on_enter_state1(self, event):
-        print("I'm entering state1")
+    def reset(self, event):
+        text = event.message.text
+        return text.lower() == "reset"
+
+    def read1(self, event):
+        print("I'm reading")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state1")
-        self.go_back()
+        send_text_message(reply_token, "You are reading")
 
-    def on_exit_state1(self):
-        print("Leaving state1")
-
-    def on_enter_state2(self, event):
-        print("I'm entering state2")
+    def read2(self, event):
+        print("I'm reading")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state2")
-        self.go_back()
+        send_text_message(reply_token,  "You are reading")
 
-    def on_exit_state2(self):
-        print("Leaving state2")
+    def read3(self, event):
+        print("I'm reading")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token,  "You are reading")
+
+    def read4(self, event):
+        print("I'm reading")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token, "You need to take a break!")
+
+    
+
+    def play1(self, event):
+        print("I'm playing")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token, "You are playing")
+
+
+    def play2(self, event):
+        print("I'm playing")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token,"You are playing")
+
+    def play3(self, event):
+        print("I'm playing")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token,"You are playing")
+
+    def play4(self, event):
+        print("I'm playing")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Don't play anymore!")
