@@ -12,9 +12,8 @@ from utils import send_text_message
 
 load_dotenv()
 
-
 machine = TocMachine(
-    states=["user", "play1", "play2" , "play3" , "play4" ,"read1", "read2" , "read3" , "read4"],
+    states=["user", "play1", "play2", "play3", "play4", "read1", "read2", "read3", "read4"],
     transitions=[
         {
             "trigger": "advance",
@@ -78,23 +77,23 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
-            "source": ["user", "play1", "play2" , "play3" , "play4" ,"read1", "read2" , "read3" , "read4"],
+            "source": ["user", "play1", "play2", "play3", "play4", "read1", "read2", "read3", "read4"],
             "dest": "user",
             "conditions": "reset",
         },
         {
             "trigger": "advance",
-            "source": ["play1", "play2" , "play3" , "play4" ],
+            "source": ["play1", "play2", "play3", "play4"],
             "dest": "read1",
             "conditions": "read",
         },
         {
             "trigger": "advance",
-            "source": [ "read1", "read2" , "read3" , "read4"],
+            "source": ["read1", "read2", "read3", "read4"],
             "dest": "play1",
             "conditions": "play",
         },
-       
+
     ],
     initial="user",
     auto_transitions=False,
@@ -102,7 +101,6 @@ machine = TocMachine(
 )
 
 app = Flask(__name__, static_url_path="")
-
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
@@ -143,7 +141,6 @@ def callback():
         )
 
     return "OK"
-
 
 
 @app.route("/webhook", methods=["POST"])
